@@ -21,7 +21,6 @@ This project demonstrates hashing, linked lists, file I/O, and simple string-sim
 - [Compile & Run](#compile--run)  
 - [Demo](#demo)  
 - [Functions implemented](#functions-implemented)  
-- [Future improvements](#future-improvements)  
 - [Author](#author)
 
 ---
@@ -92,18 +91,6 @@ Run:
 - bool isSimilar(const string& a, const string& b); — simple similarity (len diff ≤1 and ≤1 mismatch).
 
 - void suggest(const string& word); — print up to 3 suggestions.
-
----
-
-## Future improvements
-
-- Use Levenshtein (edit) distance for better suggestions.
-
-- Replace suggestion scanning with a Trie for faster suggestions.
-
-- Add example output screenshot and demo video link.
-
-- Add a .gitignore and small LICENSE (MIT or similar).
 
 ---
 
