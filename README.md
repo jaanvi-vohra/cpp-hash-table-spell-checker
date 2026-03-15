@@ -20,7 +20,7 @@ This project demonstrates hashing, linked lists, file I/O, and simple string-sim
 - [How it works](#how-it-works)  
 - [Compile & Run](#compile--run)  
 - [Demo](#demo)  
-- [Functions implemented](#functions-implemented)  
+- [Key Functions and Data Structures](#key-functions-and-data-structures)  
 - [Author](#author)
 
 ---
@@ -77,20 +77,100 @@ Run:
 ![Spell Checker Demo](demo.gif)
 ---
 
-## Functions implemented
-- unsigned int hashWord(const string& word); — djb2 hash, returns index.
+---
 
-- bool load(const string& dictionary); — read file and populate hash table.
+## Key Functions and Data Structures
 
-- bool check(string word); — return true if word exists.
+This project demonstrates the use of fundamental **data structures and algorithms**, including **hash tables, linked lists, collision handling, and efficient word lookup**.
 
-- unsigned int size(); — number of words loaded.
+---
 
-- bool unload(); — free memory.
+### 1. Hashing
 
-- bool isSimilar(const string& a, const string& b); — simple similarity (len diff ≤1 and ≤1 mismatch).
+- The program uses a **hash function (djb2)** to convert each word into an index in the hash table.
+- This allows fast lookup of dictionary words in approximately **O(1)** average time.
+- Each word is processed character by character to compute a hash value, which is then mapped to a bucket in the table.
 
-- void suggest(const string& word); — print up to 3 suggestions.
+**Function responsible:**
+
+```
+hashWord()
+```
+
+---
+
+### 2. Linked Lists (Collision Handling)
+
+- Since multiple words may produce the same hash index, **separate chaining** is used to handle collisions.
+- Each bucket in the hash table stores a **linked list of nodes**, where each node represents a dictionary word.
+- This structure allows efficient insertion and traversal when multiple words map to the same index.
+
+**Used in:**
+
+```
+load()
+check()
+unload()
+```
+
+---
+
+### 3. Dictionary Loading
+
+- The dictionary file is read **word by word**.
+- Each word is inserted into the appropriate bucket of the hash table based on the hash value.
+- A new node is dynamically created for every word.
+
+**Function responsible:**
+
+```
+load()
+```
+
+---
+
+### 4. Spell Checking
+
+- When a user enters a word, the program calculates its **hash value**.
+- It then traverses the linked list at that index to check whether the word exists in the dictionary.
+
+**Function responsible:**
+
+```
+check()
+```
+
+---
+
+### 5. Word Suggestions
+
+- If a word is not found, the program searches for **similar words** in the dictionary.
+- A simple similarity rule is used:
+  - Length difference ≤ 1
+  - Maximum one character mismatch
+- The program prints **up to three suggestions**.
+
+**Functions responsible:**
+
+```
+isSimilar()
+suggest()
+```
+
+---
+
+### 6. Memory Management
+
+- All dynamically allocated nodes in the hash table are freed before the program exits.
+- This prevents **memory leaks**.
+
+**Function responsible:**
+
+```
+unload()
+```
+
+---
 
 ---
 
