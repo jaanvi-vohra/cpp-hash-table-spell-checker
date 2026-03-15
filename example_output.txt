@@ -1,0 +1,8 @@
+```
+Spell Checker Ready
+Type words to check (type 'exit' to quit)
+
+helo
+Misspelled word: helo
+Did you mean: hello help hero
+```
