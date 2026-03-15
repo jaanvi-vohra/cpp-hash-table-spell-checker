@@ -1,0 +1,14 @@
+apple
+banana
+cat
+dog
+car
+care
+angle
+algorithm
+program
+computer
+science
+hash
+table
+structure
