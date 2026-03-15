@@ -22,7 +22,7 @@ This project demonstrates hashing, linked lists, file I/O, and simple string-sim
 - [Example session](#example-session)  
 - [Functions implemented](#functions-implemented)  
 - [Future improvements](#future-improvements)  
-- [Author & License](#author--license)
+- [Author](#author)
 
 ---
 
@@ -90,31 +90,31 @@ exit
 ---
 
 ## Functions implemented
-unsigned int hashWord(const string& word); — djb2 hash, returns index.
+- unsigned int hashWord(const string& word); — djb2 hash, returns index.
 
-bool load(const string& dictionary); — read file and populate hash table.
+- bool load(const string& dictionary); — read file and populate hash table.
 
-bool check(string word); — return true if word exists.
+- bool check(string word); — return true if word exists.
 
-unsigned int size(); — number of words loaded.
+- unsigned int size(); — number of words loaded.
 
-bool unload(); — free memory.
+- bool unload(); — free memory.
 
-bool isSimilar(const string& a, const string& b); — simple similarity (len diff ≤1 and ≤1 mismatch).
+- bool isSimilar(const string& a, const string& b); — simple similarity (len diff ≤1 and ≤1 mismatch).
 
-void suggest(const string& word); — print up to 3 suggestions.
+- void suggest(const string& word); — print up to 3 suggestions.
 
 ---
 
 ## Future improvements
 
-Use Levenshtein (edit) distance for better suggestions.
+- Use Levenshtein (edit) distance for better suggestions.
 
-Replace suggestion scanning with a Trie for faster suggestions.
+- Replace suggestion scanning with a Trie for faster suggestions.
 
-Add example output screenshot and demo video link.
+- Add example output screenshot and demo video link.
 
-Add a .gitignore and small LICENSE (MIT or similar).
+- Add a .gitignore and small LICENSE (MIT or similar).
 
 ---
 
