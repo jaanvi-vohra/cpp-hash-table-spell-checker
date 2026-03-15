@@ -19,7 +19,7 @@ This project demonstrates hashing, linked lists, file I/O, and simple string-sim
 - [Project structure](#project-structure)  
 - [How it works](#how-it-works)  
 - [Compile & Run](#compile--run)  
-- [Example session](#example-session)  
+- [Demo](#demo)  
 - [Functions implemented](#functions-implemented)  
 - [Future improvements](#future-improvements)  
 - [Author](#author)
@@ -73,20 +73,9 @@ Run:
 ```
 ---
 
-## Example session
-```
-Spell Checker Ready
-Type words to check (type 'exit' to quit)
+## Demo
 
-helo
-Misspelled word: helo
-Did you mean: hello help hero
-
-cat
-cat is correct
-
-exit
-```
+![Spell Checker Demo](demo.gif)
 ---
 
 ## Functions implemented
