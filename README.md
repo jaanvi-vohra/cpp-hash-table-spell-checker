@@ -1,160 +1,123 @@
-C++ Hash Table Spell Checker
+# C++ Hash Table Spell Checker
 
-A command-line spell checker implemented in C++ using a hash table with separate chaining.
+![Language](https://img.shields.io/badge/Language-C++-blue)
+![Data Structure](https://img.shields.io/badge/Data%20Structure-Hash%20Table-green)
+![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
 
-The program loads words from a dictionary, checks whether user-entered words exist in the dictionary, and suggests similar words when a spelling mistake is detected.
+---
 
-This project demonstrates core data structures and algorithm concepts, including hashing, linked lists, and efficient word lookup.
+A command-line **spell checker implemented in C++** using a **hash table with separate chaining**.
 
-Demo
+The program loads words from a dictionary, checks whether user-entered words exist in the dictionary, and suggests similar words when a spelling mistake is detected.  
+This project demonstrates hashing, linked lists, file I/O, and simple string-similarity logic.
 
-Example program interaction:
+---
 
-Spell Checker Ready
-Type words to check (type 'exit' to quit)
+## Table of contents
 
-helo
-Misspelled word: helo
-Did you mean: hello help hero
+- [Features](#features)  
+- [Project structure](#project-structure)  
+- [How it works](#how-it-works)  
+- [Compile & Run](#compile--run)  
+- [Example session](#example-session)  
+- [Functions implemented](#functions-implemented)  
+- [Future improvements](#future-improvements)  
+- [Author & License](#author--license)
 
-cat
-Correct word: cat
-Features
+---
 
-Fast dictionary lookup using a hash table
+## Features
 
-Separate chaining using linked lists to resolve collisions
+- Fast dictionary lookup using a **hash table**  
+- **Separate chaining** (linked lists) to handle collisions  
+- Case-insensitive word checking  
+- Simple **word suggestion** system for misspelled words  
+- Loads dictionary from a text file (`dictionary.txt`)  
+- Manual memory cleanup (`unload()`)
 
-Case-insensitive word checking
+---
 
-Word suggestion system for misspelled words
-
-Dictionary loaded from a text file
-
-Modular project structure
-
-Dynamic memory allocation and cleanup
-
-Project Structure
+## Project structure
 cpp-hash-table-spell-checker
-│
-├── main.cpp
-├── dictionary.cpp
-├── dictionary.h
-├── dictionary.txt
-├── sample_input.txt
+```
+├── main.cpp # Program entry point
+├── dictionary.cpp # Dictionary loading, lookup, suggestions
+├── dictionary.h # Structures & function declarations
+├── dictionary.txt # Word list used as dictionary
+├── sample_input.txt # Example input for testing
 └── README.md
-File Description
-File	Description
-main.cpp	Entry point of the program
-dictionary.cpp	Implements dictionary loading and lookup
-dictionary.h	Contains structures and function declarations
-dictionary.txt	Word list used as dictionary
-sample_input.txt	Example input words
-README.md	Project documentation
-Data Structures Used
-Hash Table
+```
 
-A hash table is used to store dictionary words for fast lookup.
+---
 
-index → linked list of words
+## How it works
 
-Example:
+1. `load("dictionary.txt")` reads words one-by-one and inserts them into the hash table.  
+2. `hashWord()` (djb2) computes an index: `index = hash % N`.  
+3. Each bucket is a linked list (separate chaining) — new words are inserted at the head.  
+4. When a user types a word, `check()` lowercases and searches the linked list at the hashed index.  
+5. If not found, `suggest()` scans nearby buckets (or whole table) and prints similar words found by `isSimilar()`.
 
-table[42] → apple → angle → apart
-Linked Lists (Separate Chaining)
+---
 
-When multiple words map to the same hash index, they are stored in a linked list.
+## Compile & Run
 
-table[index] → word1 → word2 → word3
+Compile:
 
-This technique is called separate chaining.
-
-Hash Function
-
-The project uses the djb2 hash function, a well-known hashing algorithm for strings.
-
-Example logic:
-
-hash = ((hash << 5) + hash) + character
-
-Properties:
-
-Fast computation
-
-Simple implementation
-
-Good distribution for text data
-
-Compilation
-
-Compile the program using g++:
-
+```
 g++ main.cpp dictionary.cpp -o speller
-Running the Program
-
-Run the executable:
-
+```
+Run:
+```
 ./speller
+```
+---
 
-You will see:
-
+## Example session
+```
 Spell Checker Ready
 Type words to check (type 'exit' to quit)
-Example Input
+
 helo
-wrld
-cat
-exit
-
-Example Output:
-
 Misspelled word: helo
 Did you mean: hello help hero
 
-Misspelled word: wrld
-Did you mean: world
+cat
+cat is correct
 
-Correct word: cat
-Functions Implemented
-Function	Purpose
-hashWord()	Computes hash index for a word
-load()	Loads dictionary into hash table
-check()	Checks if a word exists
-size()	Returns number of words in dictionary
-unload()	Frees allocated memory
-isSimilar()	Checks if two words are similar
-suggest()	Suggests possible corrections
-Concepts Demonstrated
+exit
+```
+---
 
-This project applies several fundamental computer science concepts:
+## Functions implemented
+unsigned int hashWord(const string& word); — djb2 hash, returns index.
 
-Hash tables
+bool load(const string& dictionary); — read file and populate hash table.
 
-Collision handling
+bool check(string word); — return true if word exists.
 
-Linked lists
+unsigned int size(); — number of words loaded.
 
-File I/O
+bool unload(); — free memory.
 
-Dynamic memory management
+bool isSimilar(const string& a, const string& b); — simple similarity (len diff ≤1 and ≤1 mismatch).
 
-Modular C++ programming
+void suggest(const string& word); — print up to 3 suggestions.
 
-Possible Improvements
+---
 
-Future enhancements could include:
+## Future improvements
 
-Levenshtein distance for better suggestions
+Use Levenshtein (edit) distance for better suggestions.
 
-Support for larger dictionaries
+Replace suggestion scanning with a Trie for faster suggestions.
 
-Performance benchmarking
+Add example output screenshot and demo video link.
 
-GUI-based spell checker
+Add a .gitignore and small LICENSE (MIT or similar).
 
-Multi-language dictionary support
+---
 
-Author
+## Author
 
 Jaanvi Vohra
