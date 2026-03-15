@@ -1,0 +1,13 @@
+# Executables
+*.exe
+*.out
+*.o
+
+# Build files
+speller
+
+# VS Code
+.vscode/
+
+# Mac files
+.DS_Store
