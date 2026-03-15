@@ -94,7 +94,7 @@ This project demonstrates the use of fundamental **data structures and algorithm
 **Function responsible:**
 
 ```
-hashWord()
+hashword()
 ```
 
 ---
